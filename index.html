@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-сабақ — Әлем валюталары | Ауызша интерактивті сабақ</title>
+<style>
+:root{--bg:#071426;--panel:#10233d;--panel2:#183454;--gold:#ffd166;--cyan:#65d6ff;--green:#67e8b1;--text:#f7fbff;--muted:#b8c6d9;--line:#315474}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#24548d,#0b1930 45%,#050d19 100%);color:var(--text);font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+header{max-width:1150px;margin:auto;padding:28px 20px 18px;text-align:center}.badge{display:inline-block;background:#1c3558;color:var(--gold);padding:8px 16px;border-radius:99px;font-weight:bold}.logo{font-size:clamp(30px,5vw,52px);font-weight:900;margin:14px 0 8px}.logo span{color:var(--gold)}.sub{max-width:850px;margin:auto;color:var(--muted);line-height:1.6}
+.wrap{max-width:1150px;margin:auto;padding:15px 20px 50px}.rule{background:linear-gradient(135deg,#183c69,#302d68);padding:20px;border:1px solid #4775aa;border-radius:22px;margin-bottom:20px;text-align:center;line-height:1.6}.rule b{color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:15px}.tile{background:rgba(16,35,61,.95);border:1px solid var(--line);padding:22px;border-radius:22px;cursor:pointer;transition:.2s}.tile:hover{transform:translateY(-5px);border-color:var(--cyan)}.tile .ico{font-size:40px}.tile h3{margin:12px 0 8px}.tile p{color:var(--muted);line-height:1.5;margin:0}.tile:after{content:"Бастау →";display:block;margin-top:15px;color:var(--gold);font-weight:bold}
+#lesson{display:none}.card{background:rgba(16,35,61,.97);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:0 25px 80px rgba(0,0,0,.25)}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.back{background:#294663;color:#fff;border:0;padding:11px 15px;border-radius:12px;cursor:pointer}.title{color:var(--gold);font-weight:bold}
+.question-box{background:linear-gradient(135deg,#193757,#112943);padding:24px;border-radius:20px;margin:22px 0;border-left:5px solid var(--gold)}.number{color:var(--cyan);font-weight:bold}.question{font-size:clamp(20px,3vw,29px);font-weight:800;line-height:1.45;margin:8px 0 16px}.speak{background:#0b1727;padding:14px;border-radius:14px;color:#dcecff;display:flex;gap:12px;align-items:center}.speak i{font-size:28px;font-style:normal}
+details{margin-top:15px;background:#091525;border:1px solid #365675;border-radius:14px}summary{padding:15px 18px;color:var(--gold);font-weight:bold;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:before{content:"🔒 "}details[open] summary:before{content:"🔓 "}.answer{border-top:1px solid #294561;padding:17px 18px;line-height:1.7}
+.nav{display:flex;justify-content:space-between;gap:12px}.nav button{border:0;padding:13px 18px;border-radius:12px;font-weight:bold;cursor:pointer}.prev{background:#294663;color:#fff}.next{background:var(--gold);color:#241b04}.counter{text-align:center;color:var(--muted);margin:16px}.reading{background:#091626;border:1px solid #294561;border-radius:18px;padding:20px;line-height:1.8;max-height:570px;overflow:auto}.reading h2{color:var(--gold)}
+.option{background:#19334f;padding:15px;border-radius:12px;margin:10px 0;font-size:18px}.hint{background:#102a25;border-left:4px solid var(--green);padding:15px;border-radius:12px;color:#d7fff0;margin:15px 0}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}.country{background:#10243e;border:1px solid var(--line);border-radius:18px;padding:20px;text-align:center}.country .flag{font-size:55px}.debate{background:#1a2e4b;border-radius:18px;padding:20px;margin:15px 0}.debate h3{color:var(--gold)}
+.videoBtn{display:inline-block;text-decoration:none;background:#e52d27;color:white;padding:14px 20px;border-radius:12px;font-weight:bold;margin:10px 0}.teacher{margin-top:20px;padding:18px;background:#0b1727;border:1px dashed #426688;border-radius:15px;color:#d9e7f7}
+@media(max-width:700px){.card{padding:18px}.compare{grid-template-columns:1fr}.nav{flex-direction:column}.nav button{width:100%}}
+
+/* =========================
+   📱 МОБИЛЬНЫЙ ИНТЕРФЕЙС
+   ========================= */
+.mobile-nav{display:none}
+
+@media (max-width: 768px){
+  body{padding-bottom:82px}
+  header{padding:18px 14px 12px}
+  .badge{font-size:12px;padding:7px 12px}
+  .logo{font-size:32px;line-height:1.15}
+  .sub{font-size:14px;padding:0 5px}
+  .wrap{padding:10px 12px 30px}
+  .rule{padding:15px;border-radius:18px;font-size:14px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .tile{padding:15px;border-radius:18px;min-height:190px}
+  .tile .ico{font-size:32px}
+  .tile h3{font-size:16px;margin:8px 0}
+  .tile p{font-size:12px}
+  .tile:after{font-size:13px;margin-top:10px}
+  .card{padding:15px;border-radius:20px}
+  .top{gap:10px}
+  .back{width:100%;padding:12px}
+  .title{font-size:15px;text-align:center;width:100%}
+  .question-box{padding:17px;border-radius:16px;margin:15px 0}
+  .question{font-size:20px;line-height:1.35}
+  .speak{padding:12px;font-size:14px}
+  .speak i{font-size:24px}
+  summary{padding:14px;font-size:14px}
+  .answer{padding:15px;font-size:14px}
+  .reading{padding:15px;max-height:none;font-size:15px}
+  .reading h2{font-size:22px}
+  .option{font-size:15px;padding:13px}
+  .hint{font-size:14px;padding:14px}
+  .debate{padding:16px;border-radius:16px}
+  .debate h3{font-size:18px}
+  .compare{grid-template-columns:1fr;gap:12px}
+  .country{padding:16px}
+  .country .flag{font-size:45px}
+  .videoBtn{display:block;text-align:center;padding:14px}
+  .teacher{font-size:13px;padding:14px}
+  .next,.prev{min-height:48px;font-size:15px}
+
+  .mobile-nav{
+    display:flex;
+    position:fixed;
+    left:0;right:0;bottom:0;
+    height:70px;
+    background:rgba(7,20,38,.97);
+    backdrop-filter:blur(12px);
+    border-top:1px solid #315474;
+    z-index:9999;
+    justify-content:space-around;
+    align-items:center;
+    padding:6px 8px env(safe-area-inset-bottom);
+  }
+  .mobile-nav button{
+    border:0;background:transparent;color:#cbd9e8;
+    font-size:11px;font-weight:bold;
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+    min-width:65px;padding:4px;
+  }
+  .mobile-nav .micon{font-size:23px}
+  .mobile-nav button:active{transform:scale(.94);color:#ffd166}
+}
+
+@media (max-width: 390px){
+  .grid{grid-template-columns:1fr 1fr}
+  .tile{padding:12px;min-height:175px}
+  .tile h3{font-size:14px}
+  .tile p{font-size:11px}
+  .logo{font-size:28px}
+}
+
+
+/* 🎮 DRAG & DROP GAME */
+.drag-game{margin-top:12px}
+.drag-intro{background:#0f2a45;border:1px solid #315a7c;padding:16px;border-radius:16px;margin-bottom:16px;line-height:1.5}
+.drag-bank{display:flex;flex-wrap:wrap;gap:10px;padding:14px;background:#0b1727;border-radius:18px;margin-bottom:18px}
+.drag-token{touch-action:none;user-select:none;cursor:grab;background:#ffd166;color:#1f1a08;padding:12px 15px;border-radius:14px;font-weight:800;box-shadow:0 5px 14px rgba(0,0,0,.2)}
+.drag-token.selected{outline:3px solid #65d6ff;transform:scale(1.04)}
+.drag-help{text-align:center;color:#b8c6d9;margin:10px 0;font-size:14px}
+.drag-token.dragging{position:fixed;z-index:10000;pointer-events:none;opacity:.92;transform:scale(1.06);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.drop-row{display:flex;align-items:center;gap:10px;margin:10px 0}
+.drop-country{flex:1;background:#142b44;padding:15px;border-radius:14px;font-weight:800}
+.drop-zone{flex:1.15;min-height:54px;border:2px dashed #426987;border-radius:14px;padding:7px;display:flex;align-items:center;justify-content:center;color:#91a9bf}
+.drop-zone.over{border-color:#ffd166;background:#1e3449}
+.drop-zone.correct{border-color:#6ee7b7;background:#103b34;color:#dfffee}
+.drop-zone.wrong{border-color:#ff8b8b;background:#401e26}
+.drag-status{text-align:center;font-weight:800;margin:14px 0;color:#ffd166}
+.drag-actions{display:flex;gap:10px}
+.drag-actions button{flex:1;border:0;border-radius:14px;padding:13px;font-weight:800;cursor:pointer}
+.check-drag{background:#ffd166;color:#231b05}.reset-drag{background:#294b68;color:#fff}
+@media(max-width:520px){.drop-row{flex-direction:column;align-items:stretch}.drop-country,.drop-zone{width:100%;flex:auto}.drag-token{font-size:14px;padding:11px 12px}}
+
+/* 🏆 ҚОРЫТЫНДЫ БАҒАЛАУ */
+.score-box{margin-top:20px;background:linear-gradient(135deg,#17385a,#10243e);border:1px solid #4775aa;border-radius:22px;padding:22px}
+.score-row{display:grid;grid-template-columns:1fr 110px;gap:15px;align-items:center;padding:13px 0;border-bottom:1px solid #315474}
+.score-row:last-of-type{border-bottom:0}
+.score-row label{font-weight:bold}
+.score-row small{display:block;color:var(--muted);margin-top:4px}
+.score-input{width:100%;padding:12px;border-radius:12px;border:1px solid #4775aa;background:#091626;color:#fff;font-size:17px;text-align:center}
+.score-total{text-align:center;margin:22px 0 12px;padding:22px;border-radius:18px;background:#091525;border:1px solid var(--gold)}
+.score-total .score-number{font-size:52px;font-weight:900;color:var(--gold)}
+.score-result{text-align:center;font-size:20px;font-weight:800;margin-top:8px}
+.score-actions{display:flex;gap:10px;margin-top:15px}.score-actions button{flex:1;border:0;border-radius:12px;padding:13px;font-weight:800;cursor:pointer}
+.score-calc{background:var(--gold);color:#241b04}.score-reset{background:#294b68;color:#fff}
+@media(max-width:520px){.score-row{grid-template-columns:1fr 90px;gap:10px}.score-box{padding:16px}.score-total .score-number{font-size:44px}}
+
+</style>
+</head>
+<body>
+<header>
+ <div class="badge">3-САБАҚ</div>
+ <div class="logo">🎤 <span>ӘЛЕМ ВАЛЮТАЛАРЫ</span></div>
+ <p class="sub">Ауызша интерактивті сабақ. Студенттер жауаптарды жазбайды: сұраққа дауыстап жауап береді, кейін жасырын үлгі жауапты ашып, өз жауаптарын салыстырады.</p>
+</header>
+
+<div class="wrap">
+<div id="menu">
+ <div class="rule">🎯 <b>Сабақ ережесі:</b> сұрақты оқыңыз → студент ауызша жауап береді 🎤 → топ тыңдайды → қажет болса 🔒 <b>үлгі жауапты</b> ашып, талқылайсыз.</div>
+ <div class="grid">
+  <div class="tile" onclick="openSection(0)"><div class="ico">🎯</div><h3>1-тапсырма</h3><p>Валюта туралы бастапқы сұрақтарға ауызша жауап.</p></div>
+  <div class="tile" onclick="openSection(1)"><div class="ico">📖</div><h3>2-тапсырма</h3><p>Мәтінді оқу және мәтіннің негізгі ойын анықтау.</p></div>
+  <div class="tile" onclick="openSection(2)"><div class="ico">🗣️</div><h3>Мәтін бойынша сұрақтар</h3><p>10 сұраққа ауызша жауап беру.</p></div>
+  <div class="tile" onclick="openSection(3)"><div class="ico">💱</div><h3>3-тапсырма</h3><p>Елдер мен валюталарды суретсіз нұсқада ауызша табу.</p></div>
+  <div class="tile" onclick="openSection(4)"><div class="ico">⚖️</div><h3>4-тапсырма</h3><p>Екі елдің валюталарын салыстыру.</p></div>
+  <div class="tile" onclick="openSection(5)"><div class="ico">🎥</div><h3>5-тапсырма</h3><p>Бейнеролик бойынша ауызша сұрақтар.</p></div>
+  <div class="tile" onclick="openSection(6)"><div class="ico">🔊</div><h3>6-тапсырма</h3><p>Ырықсыз етіс формасында сөйлемдерді ауызша аяқтау.</p></div>
+  <div class="tile" onclick="openSection(7)"><div class="ico">🏛️</div><h3>7-тапсырма</h3><p>«Ақшаның адам өміріндегі рөлі» тақырыбындағы дебат.</p></div>
+ </div>
+</div>
+
+<div id="lesson"><div class="card">
+ <div class="top"><button class="back" onclick="back()">← Сабақ мәзірі</button><span class="title" id="sectionTitle"></span></div>
+ <div id="content"></div>
+ <div class="teacher">👩‍🏫 <b>Мұғалімге:</b> бұл нұсқа ауызша жұмысқа арналған. Алдымен студент өз жауабын айтады, содан кейін ғана 🔒 үлгі жауап ашылады.</div>
+</div></div>
+</div>
+
+<script>
+const text=`<div class="reading"><h2>Әлем валюталары</h2>
+<p>Әлемдегі өзге елдер қандай валюта қолданатынын білесіз бе? Кей елдерде валюта атауы бірдей болғанымен, түрлері басқаша. Өзіңіз танысыңыз: теңге – Қазақстан, рубль – Ресей, афгани – Ауғанстан, бат – Тайланд, вон – Оңтүстік Корея, гульден – Нидерланды, динар – Алжир, дирхам – Араб Әмірлігі, доллар – Америка.</p>
+<p>Әр валюта өзінің әдемі дизайнымен бірге құнымен де бірінен бірі асып түседі. Жалпы ең қымбат валюта десе, еске бірден доллар түседі. Бірақ әлемде доллардан да қымбат валюталар бар. Аталмыш валюталарға мұнайлы Шығыс елдері бай.</p>
+<p><b>Кувейттік динар.</b> Бұл валютаның жоғары құны мемлекеттің мұнай экспортымен байланысты. Кувейт экономикасы ең алдымен мұнай өндірісіне сүйенеді. Валютаның белгісі – <b>KWD</b>.</p>
+<p><b>Бахрейндік динар.</b> Құндылығы бойынша әлемдегі екінші валюта. Бахрейн шамамен 1 миллион халқы бар Парсы шығанағындағы аралдық мемлекет. Валютаның белгісі – <b>BHD</b>.</p>
+<p><b>Омандық риал.</b> Бұл валюта Оман мемлекетінің ұлттық ақшасы. Оман мемлекеті мұнай-газ өнеркәсібі дамыған ел. Ақша қағазының бір бетінде ағылшын, екінші бетінде араб тілінде жазылған. Белгісі – <b>OMR</b>.</p>
+<p><b>Британдық фунт.</b> Ұлыбританияның валюта бірлігі. Белгісі – <b>GBP</b>.</p>
+<p><b>Иордания динары.</b> Иорданияның ұлттық ақшасы. Ақша қағазында және монеталарында корольдік одақ белгіленген. Жазуы ағылшын және араб тілдерінде. Белгісі – <b>JOD</b>.</p>
+<p><b>Еуропалық еуро.</b> Танымал валюталардың бірі. 2006 жылы АҚШ долларын басып озды. Белгісі – <b>EUR</b>.</p>
+<p><b>Швейцария франкі.</b> Швейцария – дүние жүзіндегі ең ірі қаржы орталықтарының бірі. Белгісі – <b>CHF</b>.</p>
+<p><b>АҚШ доллары.</b> Әлемдік сауданың 80 пайызынан астамы АҚШ долларымен есептеледі. Белгіленуі – <b>$ немесе USD</b>.</p></div>`;
+
+const sections=[
+{title:"1-ТАПСЫРМА • Сұрақтарға жауап беріңіз",type:"questions",items:[
+["Валюта деген не?","Валюта – белгілі бір мемлекеттің ақша бірлігі."],
+["Қай елдердің валюталарын білесіз? Кемінде бірнеше мысал келтіріңіз.","Мысалы: Қазақстан – теңге, АҚШ – доллар, Ресей – рубль, Ұлыбритания – фунт, Жапония – иена."],
+["Қазақстанның валютасы туралы не білесіз?","Қазақстанның ұлттық валютасы – теңге. Ол Қазақстанда ресми ақша бірлігі ретінде қолданылады."]
+]},
+{title:"2-ТАПСЫРМА • Мәтінді оқыңыз",type:"reading"},
+{title:"2-ТАПСЫРМА • Мәтін бойынша 10 сұрақ",type:"questions",items:[
+["Араб Әмірлігінің валютасы қалай аталады?","Дирхам."],
+["JOD қай елдің валютасының белгісі?","JOD – Иордания динарының белгісі."],
+["Ұлыбританияның ұлттық валютасы қалай аталады?","Британдық фунт."],
+["Сауданың 80%-дан астамы қай валютамен есептеледі?","АҚШ долларымен."],
+["2006 жылы АҚШ долларын басып озған валюта қайсы?","Еуропалық еуро."],
+["Құндылығы бойынша әлемдегі бірінші валюта ретінде мәтінде қай валюта аталады?","Кувейттік динар."],
+["Қай елдердің валюталарында ағылшын және араб тілдеріндегі жазу бар?","Омандық риал мен Иордания динары."],
+["Динар қай елдердің валютасы ретінде мәтінде аталады?","Кувейт, Бахрейн және Иордания валюталарында динар атауы қолданылады."],
+["Иорданияның ұлттық ақшасында ненің белгісі бейнеленген?","Мәтінде корольдік одақ белгіленгені айтылған."],
+["Ең ірі қаржы орталықтарының бірі қай елде орналасқан?","Швейцарияда."]
+]},
+{title:"3-ТАПСЫРМА • Валюталарды сүйреп апарыңыз",type:"drag"},
+{title:"4-ТАПСЫРМА • Екі валютаны салыстырыңыз",type:"compare"},
+{title:"5-ТАПСЫРМА • Бейнеролик бойынша",type:"video"},
+{title:"6-ТАПСЫРМА • Ырықсыз етіс",type:"questions",items:[
+["«Доллар көбіне халықаралық саудада ...» сөйлемін ауызша аяқтаңыз.","Доллар көбіне халықаралық саудада қолданылады."],
+["«Еуро Еуропа елдерінде ...» сөйлемін ауызша аяқтаңыз.","Еуро Еуропа елдерінде кеңінен қолданылады."],
+["«Жапон иенасы Азия нарығында ...» сөйлемін ауызша аяқтаңыз.","Жапон иенасы Азия нарығында қолданылады."],
+["«Теңге Қазақстанда ресми ақша бірлігі ретінде ...» сөйлемін аяқтаңыз.","Теңге Қазақстанда ресми ақша бірлігі ретінде қолданылады."],
+["«Криптовалюта онлайн жүйеде ...» сөйлемін аяқтаңыз.","Криптовалюта онлайн жүйеде қолданылады және электрондық түрде сақталады."]
+]},
+{title:"7-ТАПСЫРМА • Дебат",type:"debate"}
+];
+
+function back(){
+  document.getElementById('lesson').style.display='none';
+  document.getElementById('menu').style.display='block';
+  updateMobileNav?.();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+let currentSection=0;
+function updateMobileNav(){
+  const prev=document.getElementById('mobilePrev');
+  const next=document.getElementById('mobileNext');
+  const lessonOpen=document.getElementById('lesson').style.display==='block';
+  if(prev) prev.disabled=!lessonOpen || currentSection===0;
+  if(next) next.disabled=!lessonOpen || currentSection===sections.length-1;
+}
+function openSection(i){
+  currentSection=i;
+  document.getElementById('menu').style.display='none';
+  document.getElementById('lesson').style.display='block';
+  document.getElementById('sectionTitle').textContent=sections[i].title;
+  renderSection(sections[i]);
+  updateMobileNav();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function qCard(q,a,n){return `<div class="question-box"><div class="number">🎙️ СҰРАҚ ${n}</div><div class="question">${q}</div><div class="speak"><i>🎤</i><div><b>Алдымен ауызша жауап беріңіз!</b><br>Жауапты айтқаннан кейін ғана үлгі жауапты ашыңыз.</div></div><details><summary>Үлгі жауапты көру</summary><div class="answer"><b>Жауап:</b> ${a}</div></details></div>`}
+function renderSection(s){
+ let c=document.getElementById('content');
+ if(s.type==="questions")c.innerHTML=s.items.map((x,i)=>qCard(x[0],x[1],i+1)).join("");
+ if(s.type==="reading")c.innerHTML=`${text}<div class="question-box"><div class="number">🎙️ ТАЛҚЫЛАУ</div><div class="question">Мәтін не туралы?</div><div class="option">a) Ақшаның құндылығы туралы.</div><div class="option">b) Әлемдік елдердің валюталары туралы.</div><div class="option">c) Ең қымбат валюта туралы.</div><div class="speak"><i>🎤</i><div>Бір студент дұрыс нұсқаны ауызша атайды және неге екенін түсіндіреді.</div></div><details><summary>Дұрыс жауапты көру</summary><div class="answer"><b>b) Әлемдік елдердің валюталары туралы.</b></div></details></div>`;
+ if(s.type==="drag")c.innerHTML=renderDragGame();
+ if(s.type==="compare")c.innerHTML=`<div class="hint">🎤 <b>Нұсқаулық:</b> Екі елді салыстырыңыз: валютаның атауы, коды, тілі, қолданылуы және ерекшелігі туралы айтыңыз.</div>
+ <div class="compare"><div class="country"><div class="flag">🇺🇸</div><h2>АҚШ</h2><p>Валютасы: доллар</p><p>Коды: USD</p></div><div class="country"><div class="flag">🇬🇧</div><h2>Ұлыбритания</h2><p>Валютасы: фунт</p><p>Коды: GBP</p></div></div>
+ ${qCard("АҚШ доллары мен британдық фунттың ұқсастықтары мен айырмашылықтарын ауызша айтыңыз.","Ұқсастығы: екеуі де ұлттық валюталар және халықаралық деңгейде кеңінен қолданылады. Айырмашылығы: атауы, валюталық коды, дизайны және қолданылатын елі әртүрлі.",1)}
+ <div class="compare"><div class="country"><div class="flag">🇰🇿</div><h2>Қазақстан</h2><p>Теңге — KZT</p></div><div class="country"><div class="flag">🇨🇭</div><h2>Швейцария</h2><p>Франк — CHF</p></div></div>
+ ${qCard("Қазақстан теңгесі мен швейцария франкін салыстырыңыз.","Ұқсастығы: екеуі де өз елдерінің ресми ұлттық валютасы. Айырмашылығы: теңге Қазақстанда, франк Швейцарияда қолданылады; кодтары мен экономикалық мәртебесі әртүрлі.",2)}`;
+ if(s.type==="video")c.innerHTML=`<h2>🎥 Бейнероликті қараңыз</h2><a class="videoBtn" target="_blank" href="https://www.youtube.com/watch?v=qqcoCU6bIrQ">▶️ Бейнероликті ашу</a>
+ ${qCard("Бейнежазбадан не түсіндіңіз?","Бейнежазбадан әлемдегі әртүрлі валюталар туралы түсіндім. Әр мемлекеттің өзінің ұлттық валютасы бар. Валюталар халықаралық саудада және адамдардың күнделікті өмірінде маңызды рөл атқарады. Кейбір валюталар әлемде кеңінен қолданылады және олардың экономикалық маңызы жоғары.",1)}
+ ${qCard("Бейнежазбаның мазмұнын айтып беріңіз.","Бейнежазбада әлемдегі валюталар және олардың маңызы туралы айтылады. Әр елде әртүрлі ақша бірлігі қолданылады. Мысалы, Қазақстанда теңге, Америка Құрама Штаттарында доллар, Еуропа елдерінің көпшілігінде еуро қолданылады. Валюталар елдің экономикасына, халықаралық саудаға және адамдардың күнделікті өміріне маңызды әсер етеді. Кейбір валюталар әлемдік нарықта өте танымал және кеңінен пайдаланылады.",2)}`;
+ if(s.type==="debate")c.innerHTML=`<div class="hint" style="text-align:center;font-size:18px">🎮 <b>ДЕБАТ ОЙЫНЫ:</b> Топтар кезекпен сөйлейді, аргументтер ұсынады және қарсы топтың пікіріне жауап береді.</div>
+
+ <div class="debate" id="team1">
+   <h3>🔵 1-ТҰЖЫРЫМ</h3>
+   <p class="question">«Ақша – ең маңызды құндылық»</p>
+   <div class="speak"><i>🎤</i><div><b>1-топ осы пікірді қорғайды.</b><br>Кемінде 2 аргумент келтіреді.</div></div>
+   <details>
+     <summary>🔒 Үлгі аргументтерді көру</summary>
+     <div class="answer">
+       <b>Аргумент 1:</b><br>Ақша адамның негізгі қажеттіліктерін қамтамасыз етеді. Адам ақша арқылы тамақ, киім және тұрғын үй сатып алады.<br><br>
+       <b>Аргумент 2:</b><br>Ақша білім алуға және жақсы өмір сүруге мүмкіндік береді. Мысалы, адам университетте оқу үшін, кітап сатып алу үшін немесе қосымша курстарға қатысу үшін ақша жұмсайды.<br><br>
+       <b>Аргумент 3:</b><br>Ақша көптеген мүмкіндіктер береді. Адам саяхаттай алады, бизнес аша алады және өз мақсатына жетуге мүмкіндік алады.<br><br>
+       <b>Қорытынды:</b><br>Сондықтан ақша адам өмірінде өте маңызды. Онсыз қазіргі қоғамда көптеген қажеттіліктерді қамтамасыз ету қиын.
+     </div>
+   </details>
+ </div>
+
+ <div class="debate" id="team2">
+   <h3>🔴 2-ТҰЖЫРЫМ</h3>
+   <p class="question">«Ақша қазіргі қоғамда маңызды рөл атқарады, бірақ құндылығы асыра бағаланған»</p>
+   <div class="speak"><i>🎤</i><div><b>2-топ осы пікірді қорғайды және қарсы аргументтер келтіреді.</b></div></div>
+   <details>
+     <summary>🔒 Үлгі аргументтерді көру</summary>
+     <div class="answer">
+       <b>Аргумент 1:</b><br>Ақша маңызды болғанымен, денсаулықты ақшаға сатып алу мүмкін емес.<br><br>
+       <b>Аргумент 2:</b><br>Отбасы, достық және махаббат та адамның өміріндегі маңызды құндылықтар. Ақша адамды толық бақытты ете алмайды.<br><br>
+       <b>Аргумент 3:</b><br>Көп ақша әрқашан бақыт әкелмейді. Кейбір адамдардың ақшасы көп болса да, олар өздерін жалғыз немесе бақытсыз сезінуі мүмкін.<br><br>
+       <b>Қорытынды:</b><br>Сондықтан ақша маңызды құрал болып табылады, бірақ ол адам өміріндегі ең басты құндылық емес.
+     </div>
+   </details>
+ </div>
+
+ <div class="question-box">
+   <div class="number">⚔️ ҚАРСЫ АРГУМЕНТТЕР</div>
+   <div class="question">Енді қарсы топтың пікіріне жауап беріңіз!</div>
+   <div class="speak"><i>🎤</i><div>Алдымен өз қарсы аргументіңізді ауызша айтыңыз. Содан кейін үлгі жауапты ашыңыз.</div></div>
+   <details>
+     <summary>🔒 1-топтың қарсы аргументін көру</summary>
+     <div class="answer"><b>🔵 1-топ:</b> «Денсаулық пен отбасы маңызды, бірақ оларды қамтамасыз ету үшін де ақша қажет. Мысалы, медициналық қызмет, білім және жақсы өмір сүру үшін қаражат керек.»</div>
+   </details>
+   <details>
+     <summary>🔒 2-топтың қарсы аргументін көру</summary>
+     <div class="answer"><b>🔴 2-топ:</b> «Ақша қажеттіліктерді қамтамасыз етеді, бірақ ол адамның барлық мәселесін шеше алмайды. Денсаулық, махаббат және шынайы қарым-қатынасты сатып алу мүмкін емес.»</div>
+   </details>
+ </div>
+
+ <div class="question-box">
+   <div class="number">🎙️ ЖЕКЕ ПІКІР</div>
+   <div class="question">Сіздің жеке пікіріңіз қандай? Қай тұжырымды қолдайсыз?</div>
+   <div class="speak"><i>🎤</i><div><b>Алдымен ауызша жауап беріңіз!</b><br>Жауапты айтқаннан кейін ғана үлгі жауапты ашыңыз.</div></div>
+   <details>
+     <summary>Үлгі жауапты көру</summary>
+     <div class="answer">Мен екінші тұжырымды қолдаймын. Менің ойымша, ақша қазіргі қоғамда өте маңызды, себебі ол адамның негізгі қажеттіліктерін қамтамасыз етеді. Бірақ ақша ең басты құндылық емес. Денсаулық, отбасы, достық және адамгершілік те өмірде маңызды орын алады. Сондықтан ақша – маңызды құрал, бірақ өмірдегі ең басты құндылық емес.</div>
+   </details>
+ </div>
+
+ <div class="hint"><b>🏆 Дебат талаптары:</b><br>• қарсы аргументтер ұсыну және қолдану;<br>• өз пікірін дәлелдеу, мысалдар келтіру;<br>• қарсы топтың пікіріне жауап беру;<br>• топ алдында сөйлеу мәдениетін сақтау.</div>`;;
+}
+
+function renderScore(){
+  const criteria=[
+    ["1-тапсырма","Валюта туралы сұрақтарға жауап",10],
+    ["2-тапсырма","Мәтінді оқу және түсіну",10],
+    ["Мәтін бойынша сұрақтар","10 сұраққа жауап беру",15],
+    ["3-тапсырма","Елдер мен валюталарды дұрыс сәйкестендіру",15],
+    ["4-тапсырма","Валюталарды салыстыру",10],
+    ["5-тапсырма","Бейнеролик бойынша жауаптар",15],
+    ["6-тапсырма","Ырықсыз етіс формасы",10],
+    ["7-тапсырма","Дебат және жеке пікір",15]
+  ];
+  return `<div class="score-box">
+    <div class="hint">🏆 <b>Қорытынды бағалау:</b> әр тапсырма үшін алынған баллды енгізіңіз. Жүйе жалпы нәтижені автоматты түрде <b>100 баллдың ішінен</b> есептейді.</div>
+    ${criteria.map((x,i)=>`<div class="score-row">
+      <label>${x[0]}<small>${x[1]} • Ең көбі: ${x[2]} балл</small></label>
+      <input class="score-input" type="number" min="0" max="${x[2]}" value="0" data-max="${x[2]}" oninput="calculateFinalScore()" id="score${i}">
+    </div>`).join("")}
+    <div class="score-total">
+      <div>ЖАЛПЫ НӘТИЖЕ</div>
+      <div class="score-number" id="finalScore">0 / 100</div>
+      <div class="score-result" id="finalResult">Нәтиже енгізіңіз</div>
+    </div>
+    <div class="score-actions">
+      <button class="score-calc" onclick="calculateFinalScore()">🏆 Нәтижені есептеу</button>
+      <button class="score-reset" onclick="resetFinalScore()">↻ Қайта бастау</button>
+    </div>
+  </div>`;
+}
+
+function calculateFinalScore(){
+  let total=0;
+  document.querySelectorAll(".score-input").forEach(input=>{
+    const max=Number(input.dataset.max);
+    let value=Number(input.value)||0;
+    if(value<0) value=0;
+    if(value>max) value=max;
+    input.value=value;
+    total+=value;
+  });
+  const score=document.getElementById("finalScore");
+  const result=document.getElementById("finalResult");
+  if(!score || !result) return;
+  score.textContent=`${total} / 100`;
+  let text="";
+  if(total>=90) text="🏆 Өте жақсы!";
+  else if(total>=75) text="🌟 Жақсы нәтиже!";
+  else if(total>=50) text="👍 Қанағаттанарлық. Тағы да дайындалыңыз!";
+  else text="📚 Қайталап оқып, тағы бір рет орындап көріңіз!";
+  result.textContent=text;
+}
+
+function resetFinalScore(){
+  document.querySelectorAll(".score-input").forEach(input=>input.value=0);
+  calculateFinalScore();
+}
+
+function showArgument(n){document.getElementById('arg'+n).style.display='block';}
+
+
+const dragPairs=[
+ {country:"🇰🇿 Қазақстан",currency:"Теңге"},
+ {country:"🇷🇺 Ресей",currency:"Рубль"},
+ {country:"🇦🇫 Ауғанстан",currency:"Афгани"},
+ {country:"🇹🇭 Тайланд",currency:"Бат"},
+ {country:"🇰🇷 Оңтүстік Корея",currency:"Вон"},
+ {country:"🇦🇪 Араб Әмірлігі",currency:"Дирхам"},
+ {country:"🇺🇸 Америка",currency:"Доллар"},
+ {country:"🇨🇭 Швейцария",currency:"Франк"}
+];
+
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+
+function renderDragGame(){
+ const tokens=shuffle(dragPairs.map(x=>x.currency));
+ return `<div class="drag-game">
+   <div class="drag-intro">🎮 <b>Ойын:</b> Валюталарды төмендегі елдерге <b>саусағыңызбен сүйреп апарыңыз</b>. Барлығын орналастырғаннан кейін нәтижені тексеріңіз.</div>
+   <div class="drag-help">📱 Телефон: валютаны бір рет басыңыз → содан кейін тиісті елдің жолағын басыңыз. Компьютерде сүйреп апаруға да болады.</div>
+    <div class="drag-bank" id="dragBank">
+     ${tokens.map((t,i)=>`<div class="drag-token" data-currency="${t}" id="token${i}">${t}</div>`).join("")}
+   </div>
+   <div id="dropList">
+     ${dragPairs.map((x,i)=>`<div class="drop-row">
+       <div class="drop-country">${x.country}</div>
+       <div class="drop-zone" data-answer="${x.currency}" data-index="${i}">Валютаны осында сүйреңіз</div>
+     </div>`).join("")}
+   </div>
+   <div class="drag-status" id="dragStatus">0 / ${dragPairs.length} орналастырылды</div>
+   <div class="drag-actions">
+      <button class="check-drag" onclick="checkDragGame()">✓ Тексеру</button>
+      <button class="reset-drag" onclick="resetDragGame()">↻ Қайта бастау</button>
+   </div>
+ </div>`;
+}
+
+let activeToken=null, selectedToken=null, offsetX=0, offsetY=0, moved=false;
+
+function clearSelectedToken(){
+  document.querySelectorAll(".drag-token.selected").forEach(t=>t.classList.remove("selected"));
+  selectedToken=null;
+}
+
+function selectToken(token){
+  if(selectedToken===token){clearSelectedToken();return}
+  clearSelectedToken();
+  selectedToken=token;
+  token.classList.add("selected");
+}
+
+document.addEventListener("pointerdown", e=>{
+  const token=e.target.closest(".drag-token");
+  if(!token) return;
+  activeToken=token;
+  moved=false;
+  const r=token.getBoundingClientRect();
+  offsetX=e.clientX-r.left; offsetY=e.clientY-r.top;
+  token.setPointerCapture?.(e.pointerId);
+});
+
+document.addEventListener("pointermove", e=>{
+  if(!activeToken) return;
+  const token=activeToken;
+  const dx=Math.abs(e.movementX||0), dy=Math.abs(e.movementY||0);
+
+  if(!moved && (dx+dy>3)){
+    moved=true;
+    clearSelectedToken();
+    const r=token.getBoundingClientRect();
+    token.classList.add("dragging");
+    token.style.width=r.width+"px";
+    token.style.left=(e.clientX-offsetX)+"px";
+    token.style.top=(e.clientY-offsetY)+"px";
+  }
+  if(!moved) return;
+
+  e.preventDefault();
+  token.style.left=(e.clientX-offsetX)+"px";
+  token.style.top=(e.clientY-offsetY)+"px";
+  document.querySelectorAll(".drop-zone").forEach(z=>{
+    const r=z.getBoundingClientRect();
+    const inside=e.clientX>=r.left && e.clientX<=r.right && e.clientY>=r.top && e.clientY<=r.bottom;
+    z.classList.toggle("over",inside);
+  });
+},{passive:false});
+
+document.addEventListener("pointerup", e=>{
+  if(!activeToken) return;
+  const token=activeToken;
+  let target=null;
+
+  if(moved){
+    document.querySelectorAll(".drop-zone").forEach(z=>{
+      const r=z.getBoundingClientRect();
+      if(e.clientX>=r.left && e.clientX<=r.right && e.clientY>=r.top && e.clientY<=r.bottom) target=z;
+      z.classList.remove("over");
+    });
+
+    token.classList.remove("dragging");
+    token.style.left="";token.style.top="";token.style.width="";
+
+    if(target){
+      if(target.querySelector(".drag-token")){
+        document.getElementById("dragBank")?.appendChild(target.querySelector(".drag-token"));
+      }
+      target.textContent="";
+      target.appendChild(token);
+      target.classList.remove("correct","wrong");
+    }
+    updateDragStatus();
+  }else{
+    selectToken(token);
+  }
+  activeToken=null;
+});
+
+document.addEventListener("click", e=>{
+  const zone=e.target.closest(".drop-zone");
+  if(!zone || !selectedToken) return;
+
+  if(zone.querySelector(".drag-token")){
+    document.getElementById("dragBank")?.appendChild(zone.querySelector(".drag-token"));
+  }
+  zone.textContent="";
+  zone.appendChild(selectedToken);
+  zone.classList.remove("correct","wrong");
+  clearSelectedToken();
+  updateDragStatus();
+});
+
+function updateDragStatus(){
+ const n=document.querySelectorAll(".drop-zone .drag-token").length;
+ const s=document.getElementById("dragStatus");
+ if(s) s.textContent=`${n} / ${dragPairs.length} орналастырылды`;
+}
+
+function checkDragGame(){
+ let filled=0,correct=0;
+ document.querySelectorAll(".drop-zone").forEach(z=>{
+   z.classList.remove("correct","wrong");
+   const t=z.querySelector(".drag-token");
+   if(t){
+     filled++;
+     if(t.dataset.currency===z.dataset.answer){z.classList.add("correct");correct++}
+     else z.classList.add("wrong");
+   }
+ });
+ const s=document.getElementById("dragStatus");
+ if(filled===0){s.textContent="⚠️ Алдымен кемінде бір валютаны орналастырыңыз!";return}
+ s.textContent=correct===dragPairs.length ? "🏆 Тамаша! Барлығы дұрыс!" : `Нәтиже: ${correct} / ${dragPairs.length}. Қызыл орындарды түзетіңіз.`;
+}
+
+function resetDragGame(){renderSection({type:"drag"});}
+
+function mobilePrevSection(){
+  if(document.getElementById('lesson').style.display !== 'block') return;
+  if(currentSection > 0) openSection(currentSection - 1);
+}
+function mobileNextSection(){
+  if(document.getElementById('lesson').style.display !== 'block') return;
+  if(currentSection < sections.length - 1) openSection(currentSection + 1);
+}
+
+document.addEventListener('DOMContentLoaded', updateMobileNav);
+</script>
+
+<div class="mobile-nav">
+  <button onclick="back()"><span class="micon">🏠</span><span>Басты бет</span></button>
+  <button id="mobilePrev" onclick="mobilePrevSection()"><span class="micon">⬅️</span><span>Артқа</span></button>
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})"><span class="micon">⬆️</span><span>Жоғары</span></button>
+  <button id="mobileNext" onclick="mobileNextSection()"><span class="micon">➡️</span><span>Келесі</span></button>
+</div>
+
+</body>
+</html>
